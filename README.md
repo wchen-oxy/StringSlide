@@ -25,3 +25,7 @@ Start automatically:
 "To have launchd start postgresql now and restart at login:"
 
 brew services start postgresql
+
+
+//to install mysqlclient
+https://stackoverflow.com/questions/51701051/error-install-mysqlclient-with-pip-library-not-found-for-lssl
