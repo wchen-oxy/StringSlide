@@ -1,1 +1,7 @@
 python3/	
+
+# ignore Luis side env
+venv/
+
+# random stuff
+.DS_Store
