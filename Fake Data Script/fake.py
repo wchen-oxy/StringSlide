@@ -35,6 +35,7 @@ class Appearances:
     # tour_name = ""
     # album_name = ""
     def __init__(self, guitar_id):
+        haikunator = Haikunator()
         fake = Faker()
         self.guitar_id = guitar_id
         self.tour_name = fake.state() + " " + fake.street_name()
@@ -58,6 +59,7 @@ def main():
         appear = Appearances(x)
         #Specs
         spec = Specs()
+
 
 
 
