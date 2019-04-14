@@ -1,12 +1,21 @@
 from faker import Faker
 from haikunator import  Haikunator
 import random
+import decimal
+
+class Guitar:
+    def __init__(self, guitar_id, manufacturer_name):
+        faker = Faker()
+        self.guitar_id = guitar_id
+        self.manufacturer_name = manufacturer_name
+        self.guitar_name
+
 
 class Story:
-    def __init__(self, guitar_id):
+    def __init__(self, guitar_id, story_id):
         faker = Faker()
         # i think ext_word_list refers to custom words we can draw upon
-        self.story_id = random.randint(0, 9999999999)
+        self.story_id = story_id
         self.guitar_id = guitar_id
         self.story = faker.paragraph(nb_sentences=50, variable_nb_sentences=True, ext_word_list=None)
         self.where_purchased = faker.city() + ", " + faker.country()
@@ -22,12 +31,18 @@ class Specs:
                "Fender Vintage Noiseless", "Seymour Duncan Antiquity P-90", "LR Baggs Anthem tru-Mic",
                "Fishman Rare Earth", "EMG-81 Humbucking Active", "Railhammer Hyper Vintage Humbucker",
                "Seymour Duncan SH-13 Dimebucker", "Lollar Imperial Humbucker", "Lollar Precision Bass"]
-    def __init__(self):
+    def __init__(self, guitar_id):
+        self.guitar_id = guitar_id
+        self.production_year = "19" + random.randint(45, 99)
+        self.weight = decimal.Decimal(random.randrange(500, 125))/100
         self.body_wood = self.body_wood_list[random.randint(0, len(self.body_wood_list)-1)]
         self.fretboard_wood = self.fretboard_wood_list[random.randint(0, len(self.fretboard_wood_list)-1)]
         self.neck_wood = self.neck_wood_list[random.randint(0, len(self.neck_wood_list)-1)]
         self.cap_wood = self.cap_wood_list[random.randint(0, len(self.cap_wood_list)-1)]
-        self.pickup = self.pickup_list[random.randint(0, len(self.pickup_list)-1)]
+        self.neck_pickup = self.middle_pickup = self.bridge_pickup = \
+            self.pickup_list[random.randint(0, len(self.pickup_list)-1)]
+        self.repairs = random.choice([True, False])
+
 
 
 
@@ -45,20 +60,31 @@ class Appearances:
 
 #begin main section of code
 def main():
-    #Testing out Faker
-    # fake = Faker()
-    # print(fake.last_name())
-    # haikunator = Haikunator()
-    # print(haikunator.haikunate(token_length=0, delimiter=' '))
-    # print(fake.street_name())
 
+    #create distinct guitar number and distinct story number
+    guitar_num = list(range(1, 4))
+    guitar_num = random.sample(guitar_num, k=len(guitar_num))
+    story_num = list(range(1, 4))
+    story_num = random.sample(guitar_num, k=len(story_num))
 
+    #create list of companies
+    guitar_companies = []
+    fake = Faker()
+    for x in range(0, 50):
+        guitar_companies.append(fake.company())
 
-    for x in range(100, 200): #this will function as the guitar id(so it is not completely randomly generated)
+    for x,y  in guitar_num, story_num: #this will function as the guitar id(so it is not completely randomly generated)
+        #
+
         #Appearances
         appear = Appearances(x)
         #Specs
         spec = Specs()
+        #Story
+        story = Story(x, y)
+
+
+
 
 
 
