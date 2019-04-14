@@ -6,9 +6,11 @@ import decimal
 class Guitar:
     def __init__(self, guitar_id, manufacturer_name):
         faker = Faker()
+        haikunator = Haikunator()
         self.guitar_id = guitar_id
         self.manufacturer_name = manufacturer_name
-        self.guitar_name
+        self.guitar_name = haikunator.haikunate(token_length=0, delimiter=' ').title()
+        self.guitar_model = 
 
 
 class Story:
