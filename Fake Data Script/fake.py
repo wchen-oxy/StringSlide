@@ -2,6 +2,15 @@ from faker import Faker
 from haikunator import  Haikunator
 import random
 
+class Story:
+    def __init__(self, guitar_id):
+        faker = Faker()
+        # i think ext_word_list refers to custom words we can draw upon
+        self.story_id = random.randint(0, 9999999999)
+        self.guitar_id = guitar_id
+        self.story = faker.paragraph(nb_sentences=50, variable_nb_sentences=True, ext_word_list=None)
+        self.where_purchased = faker.city() + ", " + faker.country()
+
 
 class Specs:
     body_wood_list = ["Maple", "Mahogany", "Basswood", "Alder", "Swamp Ash", "Korina", "Japanese Ash", "Walnut"]
@@ -49,7 +58,7 @@ def main():
         appear = Appearances(x)
         #Specs
         spec = Specs()
-        
+
 
 
 
