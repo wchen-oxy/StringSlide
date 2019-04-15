@@ -115,6 +115,7 @@ def main():
             guitar = Guitar(x)
             row = [guitar.guitar_id, guitar.manufacturer_name, guitar.guitar_name, guitar.guitar_model, guitar.serial_number]
             guitar_writer.writerow(row)
+        csvFile.close()
 
         #Appearances
         with open('fake data/appearances.csv', 'a') as csvFile:
@@ -122,6 +123,8 @@ def main():
             appear = Appearances(x)
             row = [appear.guitar_id, appear.tour_name, appear.album_name]
             appear_writer.writerow(row)
+        csvFile.close()
+
         #Specs
         with open('fake data/specs.csv', 'a') as csvFile:
             specs_writer = csv.writer(csvFile)
@@ -129,18 +132,24 @@ def main():
             row = [spec.guitar_id, spec.production_year, spec.weight, spec.finish, spec.body_wood, spec.neck_wood,
                    spec.fretboard_wood, spec.cap_wood, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.repairs]
             specs_writer.writerow(row)
+        csvFile.close()
+
         #Story
         with open('fake data/story.csv', 'a') as csvFile:
             story_writer = csv.writer(csvFile)
             story = Story(x, y)
             row = [story.story_id, story.guitar_id, story.story_text, story.where_purchased, story.custom_built]
             story_writer.writerow(row)
+        csvFile.close()
+
         #Photos
         with open('fake data/photos.csv', 'a') as csvFile:
             photos_writer = csv.writer(csvFile)
             photo = Photos(x)
             row = [photo.guitar_id, photo.photo_number, photo.photo_path]
             photos_writer.writerow(row)
+        csvFile.close()
+
 
         #video
         with open('fake data/videos.csv', 'a') as csvFile:
@@ -148,7 +157,7 @@ def main():
             video = Videos(x)
             row = [video.guitar_id, video.video_number, video.video_path]
             video_writer.writerow(row)
-
+        csvFile.close()
 
 
 if __name__ == '__main__':
