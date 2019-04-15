@@ -10,7 +10,8 @@ class Guitar:
         self.guitar_id = guitar_id
         self.manufacturer_name = manufacturer_name
         self.guitar_name = haikunator.haikunate(token_length=0, delimiter=' ').title()
-        self.guitar_model = 
+        self.guitar_model = faker.company()
+        self.serial_number = faker.ean(length=25)
 
 
 class Story:
@@ -21,6 +22,7 @@ class Story:
         self.guitar_id = guitar_id
         self.story = faker.paragraph(nb_sentences=50, variable_nb_sentences=True, ext_word_list=None)
         self.where_purchased = faker.city() + ", " + faker.country()
+        self.custom_built = random.choice([True, False])
 
 
 class Specs:
@@ -58,6 +60,19 @@ class Appearances:
         self.tour_name = fake.state() + " " + fake.street_name()
         self.album_name = haikunator.haikunate(token_length=0, delimiter=' ').title()
 
+class Photos:
+    def __init__(self, guitar_id):
+        faker = Faker()
+        self.guitar_id = guitar_id
+        self.photo_number = random.randint(1, 126)
+        self.photo_path = faker.image_url(width=None, height=None)
+
+class Videos:
+    def __init__(self, guitar_id):
+        faker = Faker()
+        self.guitar_id = guitar_id
+        self.video_number = random.randint(1, 126)
+        self.video_path = faker.image_url(width=None, height=None)
 
 
 #begin main section of code
