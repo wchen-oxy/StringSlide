@@ -156,9 +156,9 @@ public class Insert {//establish connections to the database
                         }
                         //serial_number
                         try {
-                            ps.setLong(5, Integer.parseInt(csvData.get(i).get(4)));
+                            ps.setInt(5, Integer.parseInt(csvData.get(i).get(4)));
                         } catch (IndexOutOfBoundsException ie) {
-                            ps.setNull(5, Types.INTEGER);
+                            ps.setNull(5, Types.BIGINT);
                         }
 
                     } else if (table.equals("Story")) {
