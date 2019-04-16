@@ -118,9 +118,9 @@ public class Insert {//establish connections to the database
                     insertTableSql = "INSERT INTO Videos(guitar_id, video_number, video_path)" +
                             "Values(?, ?, ?)";
                 } else if (table.equals("Specs")) {
-                    insertTableSql = "INSERT INTO Specs(guitar_id, production_year, weight, finish, body_wood, " +
-                            "neck_wood, fretboard_wood, cap_wood, neck_pickup, middle_pickup, bridge_pickup, repairs" +
-                            "Values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    insertTableSql = "INSERT INTO Specs(guitar_id, guitar_spec_id, production_year, weight, finish, body_wood, " +
+                            "neck_wood, fretboard_wood, cap_wood, neck_pickup, middle_pickup, bridge_pickup, repairs)" +
+                            "Values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 } else if (table.equals("Appearances")) {
                     insertTableSql = "INSERT INTO Appearances(guitar_id, tour_name, album_name)" +
                             "Values(?, ?, ?)";
@@ -205,71 +205,72 @@ public class Insert {//establish connections to the database
                     }  else if (table.equals("Specs")) {
 
                         ps.setInt(1, Integer.parseInt(csvData.get(i).get(0)));
+                        ps.setInt(2, Integer.parseInt(csvData.get(i).get(1)));
 
                         try{
-                        ps.setInt(2, Integer.parseInt(csvData.get(i).get(1)));}
+                        ps.setInt(3, Integer.parseInt(csvData.get(i).get(2)));}
                         catch (IndexOutOfBoundsException ie) {
-                            ps.setNull(2, Types.INTEGER);
+                            ps.setNull(3, Types.INTEGER);
                         }
                         try{
-                            ps.setDouble(3, Double.parseDouble(csvData.get(i).get(2)));
+                            ps.setDouble(4, Double.parseDouble(csvData.get(i).get(3)));
                         }
                         catch (IndexOutOfBoundsException ie) {
-                            ps.setNull(3, Types.DOUBLE);
+                            ps.setNull(4, Types.DOUBLE);
                         }
                         //finish
-                        try {
-                            ps.setString(4, csvData.get(i).get(3));
-                        } catch (IndexOutOfBoundsException ie) {
-                            ps.setNull(4, Types.VARCHAR);
-                        }
-                        //body wood
                         try {
                             ps.setString(5, csvData.get(i).get(4));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(5, Types.VARCHAR);
                         }
-                        //neck wood
+                        //body wood
                         try {
                             ps.setString(6, csvData.get(i).get(5));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(6, Types.VARCHAR);
                         }
-                        //fretboard_wood
+                        //neck wood
                         try {
                             ps.setString(7, csvData.get(i).get(6));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(7, Types.VARCHAR);
                         }
-                        //cap_wood
+                        //fretboard_wood
                         try {
                             ps.setString(8, csvData.get(i).get(7));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(8, Types.VARCHAR);
                         }
-                        //neck_pickup
+                        //cap_wood
                         try {
                             ps.setString(9, csvData.get(i).get(8));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(9, Types.VARCHAR);
                         }
-                        //middle_pickup
+                        //neck_pickup
                         try {
                             ps.setString(10, csvData.get(i).get(9));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(10, Types.VARCHAR);
                         }
-                        //bridge_pickup
+                        //middle_pickup
                         try {
                             ps.setString(11, csvData.get(i).get(10));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(11, Types.VARCHAR);
                         }
+                        //bridge_pickup
+                        try {
+                            ps.setString(12, csvData.get(i).get(11));
+                        } catch (IndexOutOfBoundsException ie) {
+                            ps.setNull(12, Types.VARCHAR);
+                        }
                         //repairs
                         try {
-                            ps.setBoolean(12, Boolean.parseBoolean(csvData.get(i).get(4)));
+                            ps.setBoolean(13, Boolean.parseBoolean(csvData.get(i).get(12)));
                         } catch (IndexOutOfBoundsException ie) {
-                            ps.setNull(12, Types.BOOLEAN);
+                            ps.setNull(13, Types.BOOLEAN);
                         }
 
                     } else if (table.equals("Appearances")) {

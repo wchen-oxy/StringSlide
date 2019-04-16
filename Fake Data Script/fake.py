@@ -45,6 +45,7 @@ class Specs:
     def __init__(self, guitar_id):
         faker = Faker()
         self.guitar_id = guitar_id
+        self.guitar_spec_id = str(random.randint(1, 126))
         self.production_year = "19" + str(random.randint(45, 99))
         self.weight = decimal.Decimal(random.randrange(500, 1250))/100
         self.finish = faker.color_name()
@@ -109,55 +110,55 @@ def main():
 
 
     for x,y  in zip(guitar_num, story_num): #this will function as the guitar id(so it is not completely randomly generated)
-        #Guitar
-        with open('fake data/guitar.csv', 'a') as csvFile:
-            guitar_writer = csv.writer(csvFile)
-            guitar = Guitar(x)
-            row = [guitar.guitar_id, guitar.manufacturer_name, guitar.guitar_name, guitar.guitar_model, guitar.serial_number]
-            guitar_writer.writerow(row)
-        csvFile.close()
-
-        #Appearances
-        with open('fake data/appearances.csv', 'a') as csvFile:
-            appear_writer = csv.writer(csvFile)
-            appear = Appearances(x)
-            row = [appear.guitar_id, appear.tour_name, appear.album_name]
-            appear_writer.writerow(row)
-        csvFile.close()
+        # #Guitar
+        # with open('fake data/guitar.csv', 'a') as csvFile:
+        #     guitar_writer = csv.writer(csvFile)
+        #     guitar = Guitar(x)
+        #     row = [guitar.guitar_id, guitar.manufacturer_name, guitar.guitar_name, guitar.guitar_model, guitar.serial_number]
+        #     guitar_writer.writerow(row)
+        # csvFile.close()
+        #
+        # #Appearances
+        # with open('fake data/appearances.csv', 'a') as csvFile:
+        #     appear_writer = csv.writer(csvFile)
+        #     appear = Appearances(x)
+        #     row = [appear.guitar_id, appear.tour_name, appear.album_name]
+        #     appear_writer.writerow(row)
+        # csvFile.close()
 
         #Specs
         with open('fake data/specs.csv', 'a') as csvFile:
             specs_writer = csv.writer(csvFile)
             spec = Specs(x)
-            row = [spec.guitar_id, spec.production_year, spec.weight, spec.finish, spec.body_wood, spec.neck_wood,
+            row = [spec.guitar_id, spec.guitar_spec_id, spec.production_year, spec.weight, spec.finish, spec.body_wood, spec.neck_wood,
                    spec.fretboard_wood, spec.cap_wood, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.repairs]
             specs_writer.writerow(row)
         csvFile.close()
 
-        #Story
-        with open('fake data/story.csv', 'a') as csvFile:
-            story_writer = csv.writer(csvFile)
-            story = Story(x, y)
-            row = [story.story_id, story.guitar_id, story.story_text, story.where_purchased, story.custom_built]
-            story_writer.writerow(row)
-        csvFile.close()
-
-        #Photos
-        with open('fake data/photos.csv', 'a') as csvFile:
-            photos_writer = csv.writer(csvFile)
-            photo = Photos(x)
-            row = [photo.guitar_id, photo.photo_number, photo.photo_path]
-            photos_writer.writerow(row)
-        csvFile.close()
-
-
-        #video
-        with open('fake data/videos.csv', 'a') as csvFile:
-            video_writer = csv.writer(csvFile)
-            video = Videos(x)
-            row = [video.guitar_id, video.video_number, video.video_path]
-            video_writer.writerow(row)
-        csvFile.close()
+        # #Story
+        # with open('fake data/story.csv', 'a') as csvFile:
+        #     story_writer = csv.writer(csvFile)
+        #     story = Story(x, y)
+        #     row = [story.story_id, story.guitar_id, story.story_text, story.where_purchased, story.custom_built]
+        #     story_writer.writerow(row)
+        # csvFile.close()
+        #
+        # #Photos
+        # with open('fake data/photos.csv', 'a') as csvFile:
+        #     photos_writer = csv.writer(csvFile)
+        #     photo = Photos(x)
+        #     row = [photo.guitar_id, photo.photo_number, photo.photo_path]
+        #     photos_writer.writerow(row)
+        # csvFile.close()
+        #
+        #
+        # #video
+        # with open('fake data/videos.csv', 'a') as csvFile:
+        #     video_writer = csv.writer(csvFile)
+        #     video = Videos(x)
+        #     row = [video.guitar_id, video.video_number, video.video_path]
+        #     video_writer.writerow(row)
+        # csvFile.close()
 
 
 if __name__ == '__main__':
