@@ -156,7 +156,7 @@ public class Insert {//establish connections to the database
                         }
                         //serial_number
                         try {
-                            ps.setInt(5, Integer.parseInt(csvData.get(i).get(4)));
+                            ps.setDouble(5, Double.parseDouble(csvData.get(i).get(4)));
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(5, Types.BIGINT);
                         }

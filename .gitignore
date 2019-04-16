@@ -5,3 +5,5 @@ venv/
 
 # random stuff
 .DS_Store
+.idea
+
