@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 import random
-from .models import Guitar
+from .models import Guitar, Story
 
 # Create your views here.
 def index(request):
@@ -13,7 +13,7 @@ def home(request):
 
     guitar = Guitar.objects.get(guitar_id=1)
     guitar2 = Guitar.objects.get(guitar_id=2)
-    guitar3 = Guitar.objects.get(guitar_id=3)
+    guitar3 = Guitar.objects.get(guitar_id=1001)
 
 
     
@@ -30,3 +30,14 @@ def home(request):
                                          'guitar_name3': guitar3.guitar_name,
 
                                          })
+
+def entry_page(request):
+    guitar_id = 1001
+    guitar=Guitar.objects.get(guitar_id=guitar_id)
+    story =Story.objects.get(guitar_id=guitar_id)
+
+    return render(request, 'entries/entry.html', {'guitar_id': guitar.guitar_id,
+                                         'guitar_model':guitar.guitar_model,
+                                         'guitar_name': guitar.guitar_name,
+                                          'story':story.story_text
+                                          })
