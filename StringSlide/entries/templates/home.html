@@ -1,13 +1,23 @@
+{% load staticfiles %}
 <html lang="en">
 <title>StringSlide</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
+<div class="header">
   <h1 >StringSlide Homepage</h1>
   <body>
   <p> Welcome! </p>
+  <p>  {% for guitar in place %}
+  {{guitar.name}} 
+      {% endfor %}
+</p>
   </body>
+</div>
+
+
 
   </html>
