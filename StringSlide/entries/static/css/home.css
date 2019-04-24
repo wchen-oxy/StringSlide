@@ -62,7 +62,7 @@ p{margin-left: 2rem;
 	font: 100 2.7em "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#row{
+.row{
 	text-align: center;
 	display: inline-block;
 }

@@ -3,16 +3,20 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 import random
-from .models import Guitar, Story
+from .models import Guitar, Story, Photos, Specs, Appearances
 
 # Create your views here.
 def index(request):
     return HttpResponse("Hello, world. You're at the entries")
 
 def home(request):
+    num = random.randint(1,999)
+    num2 = random.randint(1,999)
 
-    guitar = Guitar.objects.get(guitar_id=1)
-    guitar2 = Guitar.objects.get(guitar_id=2)
+
+
+    guitar = Guitar.objects.get(guitar_id=num)
+    guitar2 = Guitar.objects.get(guitar_id=num2)
     guitar3 = Guitar.objects.get(guitar_id=1001)
 
 
@@ -31,13 +35,33 @@ def home(request):
 
                                          })
 
-def entry_page(request):
-    guitar_id = 1001
+def entry_page(request, guitar_id):
+
     guitar=Guitar.objects.get(guitar_id=guitar_id)
     story =Story.objects.get(guitar_id=guitar_id)
+    photo = Photos.objects.get(guitar_id=guitar_id)
+    spec = Specs.objects.get(guitar_id=guitar_id)
+    #appear = Appearances.objects.get(guitar_id=guitar_id)
 
     return render(request, 'entries/entry.html', {'guitar_id': guitar.guitar_id,
+                                                  'guitar_man': guitar.manufacturer_name,
                                          'guitar_model':guitar.guitar_model,
                                          'guitar_name': guitar.guitar_name,
-                                          'story':story.story_text
+                                          'story':story.story_text,
+                                                  'photo':photo.photo_path,
+                                                  'production_year':spec.production_year,
+                                                  'finish':spec.finish,
+                                                  'weight':spec.weight,
+                                                  'body_wood':spec.body_wood,
+                                                  'neck_wood':spec.neck_wood,
+                                                  'fretboard_wood':spec.fretboard_wood,
+                                                  'cap_wood':spec.cap_wood,
+                                                  'neck_pick':spec.neck_pickup,
+                                                  'middle_pickup':spec.middle_pickup,
+                                                  'bridge_pickup':spec.bridge_pickup,
+                                                  'repairs':spec.repairs
+                                                  #'tour': appear.tour_name,
+                                                  #'album':appear.album_name
+
+
                                           })
