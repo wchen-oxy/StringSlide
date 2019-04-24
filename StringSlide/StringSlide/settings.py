@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'StringSlide.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'StringSlide',
+        'NAME': 'test',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
