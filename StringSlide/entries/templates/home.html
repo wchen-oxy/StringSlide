@@ -6,18 +6,15 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 <div class="header">
   <h1 >StringSlide Homepage</h1>
-  <body>
-  <p> Welcome! </p>
-  <p>  {% for guitar in place %}
-  {{guitar.name}} 
-      {% endfor %}
-</p>
-  </body>
 </div>
 
-
-
-  </html>
+<div class="row">
+  <div class="col-sm-4"><p>{{guitar_id}} {{guitar_name}} {{guitar_model}}</p></div>
+  <div class="col-sm-4"><p>{{guitar_id2}} {{guitar_name2}} {{guitar_model2}}</p></div>
+  <div class="col-sm-4"><p>{{guitar_id3}} {{guitar_name3}} {{guitar_model3}}</p></div>
+</div>
+ </html>
