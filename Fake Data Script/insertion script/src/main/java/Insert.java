@@ -58,7 +58,7 @@ public class Insert {//establish connections to the database
 
         for (int j = 0; j <= args.length; j = j + 2) {
             String table = args[j];
-            String filename = "real data/" + args[j+1];
+            String filename = "fake data/" + args[j+1];
 
 
             //establish connection
