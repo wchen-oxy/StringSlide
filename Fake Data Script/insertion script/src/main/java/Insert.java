@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class Insert {//establish connections to the database
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/Test";
+    static final String DB_URL = "jdbc:mysql://localhost/Test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     static final String USER = "root";
     static final String PASSWORD = "";
     //sae these information into a dbparam.txt
@@ -28,6 +28,7 @@ public class Insert {//establish connections to the database
         List<String> values = new ArrayList<String>();
 
         try (Scanner rowScanner = new Scanner(line)) {
+
 
             rowScanner.useDelimiter(",");
 
@@ -57,7 +58,7 @@ public class Insert {//establish connections to the database
 
         for (int j = 0; j <= args.length; j = j + 2) {
             String table = args[j];
-            String filename = "fake data/" + args[j+1];
+            String filename = "real data/" + args[j+1];
 
 
             //establish connection

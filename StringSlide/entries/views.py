@@ -37,11 +37,27 @@ def home(request):
 
 def entry_page(request, guitar_id):
 
-    guitar=Guitar.objects.get(guitar_id=guitar_id)
-    story =Story.objects.get(guitar_id=guitar_id)
+    guitar = Guitar.objects.get(guitar_id=guitar_id)
+    story = Story.objects.get(guitar_id=guitar_id)
     photo = Photos.objects.get(guitar_id=guitar_id)
     spec = Specs.objects.get(guitar_id=guitar_id)
-    #appear = Appearances.objects.get(guitar_id=guitar_id)
+    appear = Appearances.objects.get(guitar_id=guitar_id)
+    repaired = ""
+    prev = ""
+    next = ""
+
+    if int(guitar.guitar_id) != 1:
+        prev = "/entries/" + str(int(guitar.guitar_id) - 1)
+        next = "/entries/" + str(int(guitar.guitar_id) + 1)
+    else
+        prev = "/entries/" + str(1)
+        next = "/entries/" + str(int(guitar.guitar_id) + 1)
+
+    if spec.repairs == 1:
+        repaired = "Yes"
+    else:
+        repaired = "None"
+
 
     return render(request, 'entries/entry.html', {'guitar_id': guitar.guitar_id,
                                                   'guitar_man': guitar.manufacturer_name,
@@ -59,9 +75,9 @@ def entry_page(request, guitar_id):
                                                   'neck_pick':spec.neck_pickup,
                                                   'middle_pickup':spec.middle_pickup,
                                                   'bridge_pickup':spec.bridge_pickup,
-                                                  'repairs':spec.repairs
-                                                  #'tour': appear.tour_name,
-                                                  #'album':appear.album_name
-
-
+                                                  'repairs':repaired,
+                                                  'tour': appear.tour_name,
+                                                  'album':appear.album_name,
+                                                  'prev': prev,
+                                                  'next': next
                                           })
