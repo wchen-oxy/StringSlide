@@ -36,7 +36,9 @@ def home(request):
 
                                          })
 
-# def new(request):
+def new(request):
+
+    render(request)
 
 
 def entry_page(request, guitar_id):

@@ -8,7 +8,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.home, name="home"),
     url("test", views.index, name="test"),
-    # url("new",views.new, name="new"),
+    url("new",views.new, name="new"),
     path("entries/<int:guitar_id>", views.entry_page, name="entry_page"),
 
 
