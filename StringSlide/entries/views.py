@@ -13,25 +13,41 @@ def home(request):
     num = random.randint(1,999)
     num2 = random.randint(1,999)
 
-
-
     guitar = Guitar.objects.get(guitar_id=num)
+    g_photo = Photos.objects.get(guitar_id=num)
+    g_story = Story.objects.get(guitar_id=num)
     guitar2 = Guitar.objects.get(guitar_id=num2)
+    g_photo2 = Photos.objects.get(guitar_id=num2)
+    g_story2 = Story.objects.get(guitar_id=num2)
     guitar3 = Guitar.objects.get(guitar_id=1001)
+    g_photo3 = Photos.objects.get(guitar_id=10)
+    g_story3 = Story.objects.get(guitar_id=10)
+
+    text_1 = g_story.story_text;
+    text_1 = (text_1[:100] + '...') if len(text_1) > 103 else text_1
+    text_2 = g_story2.story_text;
+    text_2 = (text_2[:100] + '...') if len(text_2) > 103 else text_2
+    text_3 = g_story3.story_text;
+    text_3 = (text_3[:100] + '...') if len(text_3) > 103 else text_3
 
 
-    
     return render(request, 'home.html', {'guitar_id': guitar.guitar_id,
-                                         'guitar_model':guitar.guitar_model,
+                                         'guitar_model': guitar.guitar_model,
                                          'guitar_name': guitar.guitar_name,
+                                         'guitar_image' : g_photo.photo_path,
+                                         'guitar_summary' : text_1,
 
                                          'guitar_id2': guitar2.guitar_id,
                                          'guitar_model2': guitar2.guitar_model,
                                          'guitar_name2': guitar2.guitar_name,
+                                         'guitar_image2' : g_photo2.photo_path,
+                                         'guitar_summary2' : text_2,
 
                                          'guitar_id3': guitar3.guitar_id,
                                          'guitar_model3': guitar3.guitar_model,
                                          'guitar_name3': guitar3.guitar_name,
+                                         'guitar_image3' : g_photo3.photo_path,
+                                         'guitar_summary3' : text_3,
 
                                          })
 
@@ -49,7 +65,7 @@ def entry_page(request, guitar_id):
     if int(guitar.guitar_id) != 1:
         prev = "/entries/" + str(int(guitar.guitar_id) - 1)
         next = "/entries/" + str(int(guitar.guitar_id) + 1)
-    else
+    else:
         prev = "/entries/" + str(1)
         next = "/entries/" + str(int(guitar.guitar_id) + 1)
 
