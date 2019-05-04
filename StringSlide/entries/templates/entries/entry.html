@@ -9,37 +9,59 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 <div class="header">
-  <h1>StringSlide</h1>
+	<span>StringSlide</span>
 </div>
+<div class="container">
+	<section>
+		<h2 class="col-2-3">{{guitar_man}} "{{guitar_name}}"</h2>
+		<h3 class="col-2-3">Story</h3>
+		<p>{{story}}</p>
 
+	</section>
 
-<h3 class="col-2-3">Guitar Manufacturer: {{guitar_man}}</h3>
-<h3 class="col-2-3">Guitar Name: {{guitar_name}} </h3>
-<h3 class="col-2-3">Guitar Model: {{guitar_model}} </h3>
-<img class="profile" src={{photo}} width="250">
-<h3 class="col-2-3">Story</h3>
-<p>{{story}}</p>
-<h3 class="col-2-3">Specifications</h3>
-<p>Production Year: {{production_year}}</p>
-<p>Wood Finish: {{finish}}</p>
-<p>Weight: {{weight}}</p>
-<p>Body Wood: {{body_wood}}</p>
-<p>Neck Wood: {{neck_wood}}</p>
-<p>Fretboard Wood: {{fretboard_wood}}</p>
-<p>Cap Wood: {{cap_wood}}</p>
-<p>Neck Pickup: {{neck_pick}}</p>
-<p>Middle Pickup: {{middle_pickup}}</p>
-<p>Bridge Pickup: {{bridge_pickup}}</p>
-<p>Repaired?: {{repairs}}</p>
-<h3 class="col-2-3">Appearances</h3>
-<p>Tours: {{tour}}</p>
-<p>Albums: {{album}}</p>
-<p> {{guitar_id}}</p>
+	<div class="technical_all">
+
+	<aside>
+		<div class =technical_top>
+			<h3 class="col-2-3">{{guitar_man}} "{{guitar_name}}"</h3>
+				<img class="profile" src={{photo}} width="220">
+			<h3 class="col-2-3">Guitar Manufacturer: {{guitar_man}}</h3>
+			<h3 class="col-2-3">Guitar Name: {{guitar_name}} </h3>
+			<h3 class="col-2-3">Guitar Model: {{guitar_model}} </h3>
+		</div>
+
+		<div class="techinical_bot">
+		
+		<h3 class="col-2-3">Specifications</h3>
+		<p>Production Year: {{production_year}}</p>
+		<p>Wood Finish: {{finish}}</p>
+		<p>Weight: {{weight}}</p>
+		<p>Body Wood: {{body_wood}}</p>
+		<p>Neck Wood: {{neck_wood}}</p>
+		<p>Fretboard Wood: {{fretboard_wood}}</p>
+		<p>Cap Wood: {{cap_wood}}</p>
+		<p>Neck Pickup: {{neck_pick}}</p>
+		<p>Middle Pickup: {{middle_pickup}}</p>
+		<p>Bridge Pickup: {{bridge_pickup}}</p>
+		<p>Repaired?: {{repairs}}</p>
+		<h3 class="col-2-3">Appearances</h3>
+		<p>Tours: {{tour}}</p>
+		<p>Albums: {{album}}</p>
+		
+		<p> 
+			<!-- {% for rand in random %}
+			{{rand.guitar_id}}
+			{% endfor %}</p> -->
+		</p>
+		</div>
+	</aside>
+	</div>
+</div>
 <form action={{prev}}>
-    <input type="submit" value="Previous Entry" />
+	<input type="submit" value="Previous Entry" />
 </form>
 <form action={{next}}>
-    <input type="submit" value="Next Entry" />
+	<input type="submit" value="Next Entry" />
 </form>
 
 

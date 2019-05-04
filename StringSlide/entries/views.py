@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.db import connection
 
 import random
 from .models import Guitar, Story, Photos, Specs, Appearances
@@ -51,16 +52,28 @@ def home(request):
 
                                          })
 
+# def new(request):
+
+
 def entry_page(request, guitar_id):
 
+    repaired = ""
+    prev = ""
+    next = ""
     guitar = Guitar.objects.get(guitar_id=guitar_id)
     story = Story.objects.get(guitar_id=guitar_id)
     photo = Photos.objects.get(guitar_id=guitar_id)
     spec = Specs.objects.get(guitar_id=guitar_id)
-    appear = Appearances.objects.get(guitar_id=guitar_id)
-    repaired = ""
-    prev = ""
-    next = ""
+    try:
+        appear_tour = Appearances.objects.get(guitar_id=guitar_id).tour_name
+    except:
+        appear_tour = "None"
+
+    try:
+        appear_album = Appearances.objects.get(guitar_id=guitar_id).album_name
+    except:
+        appear_album = "None"
+
 
     if int(guitar.guitar_id) != 1:
         prev = "/entries/" + str(int(guitar.guitar_id) - 1)
@@ -73,6 +86,7 @@ def entry_page(request, guitar_id):
         repaired = "Yes"
     else:
         repaired = "None"
+
 
 
     return render(request, 'entries/entry.html', {'guitar_id': guitar.guitar_id,
@@ -92,8 +106,9 @@ def entry_page(request, guitar_id):
                                                   'middle_pickup':spec.middle_pickup,
                                                   'bridge_pickup':spec.bridge_pickup,
                                                   'repairs':repaired,
-                                                  'tour': appear.tour_name,
-                                                  'album':appear.album_name,
+                                                  'tour': appear_tour,
+                                                  'album': appear_album,
                                                   'prev': prev,
-                                                  'next': next
+                                                  'next': next,
+
                                           })
