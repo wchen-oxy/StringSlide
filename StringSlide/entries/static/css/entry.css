@@ -59,10 +59,43 @@ h1 {
 }
 
 p{margin-left: 2rem;
-	font: 100 2.7em "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: 100 20px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .row{
 	text-align: center;
 	display: inline-block;
+}
+
+.header {
+  height: 50px;
+  line-height: 200px;
+  text-align: center;
+  text-align: left;
+background-color: #9fc2ea;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+	font: 300 2.7em "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font
+	}
+
+section{
+	float: left;
+  width: 63.197026%;
+}
+
+aside{
+float: right;
+  width: 29.3680297%;
+background-color: #e0e1e2;
+padding: 30px;
+
+}
+
+.technical_all{
+	padding-top: 25px;
 }

@@ -36,6 +36,9 @@ def home(request):
 
                                          })
 
+# def new(request):
+
+
 def entry_page(request, guitar_id):
 
     repaired = ""
