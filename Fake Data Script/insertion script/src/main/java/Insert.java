@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 public class Insert {//establish connections to the database
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    //static final String DB_URL = "jdbc:mysql://localhost/Test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     static final String DB_URL = "jdbc:mysql://localhost/Test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     static final String USER = "root";
     static final String PASSWORD = "";
@@ -32,6 +33,7 @@ public class Insert {//establish connections to the database
 
             rowScanner.useDelimiter(",");
 
+
             while (rowScanner.hasNext()) {
                 String temp;
                 String strings = rowScanner.next();
@@ -40,7 +42,10 @@ public class Insert {//establish connections to the database
                     values.add(temp);
                 } else values.add(strings);
             }
+        }
 
+        if(values.size()==6){
+            values.set(3,values.get(3)+", "+values.get(4));
         }
 
         return values;
@@ -97,7 +102,7 @@ public class Insert {//establish connections to the database
                 }
                 System.out.println("Insert into the " + table + " Table..");
 
-                //loop through the recorrds
+                //loop through the records
                 //cfor each record
                 //make a prepared statement
 
