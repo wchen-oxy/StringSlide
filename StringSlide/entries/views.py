@@ -4,7 +4,13 @@ from django.shortcuts import get_object_or_404, render
 from django.db import connection
 
 import random
-from .models import Guitar, Story, Photos, Specs, Appearances
+from .models import Guitar, Story, Photos, Specs, Appearances, Videos
+from .forms import GuitarForm, AppearForm, PhotosForm, SpecsForm, StoryForm, VideosForm
+from django.shortcuts import redirect
+from django.forms.formsets import formset_factory
+
+
+
 
 # Create your views here.
 def index(request):
@@ -53,8 +59,150 @@ def home(request):
                                          })
 
 def new(request):
+    data = None
+    form = GuitarForm(request.POST)
+    form2 = AppearForm(request.POST)
+    form3 = PhotosForm(request.POST)
+    form4 = SpecsForm(request.POST)
+    form5 = StoryForm(request.POST)
+    form6 = VideosForm(request.POST)
+    print("begin")
+    #section for submission
+    if request.method == "POST":
+        data = request.POST
+        print("is Post")
 
-    render(request)
+        user = request.user
+        post_values = request.POST.copy()
+
+        #section for random guitar_id
+        boo = True
+        while boo:
+            print("in while")
+            num = random.randint(0, 9999)
+            try:
+                print("inner")
+                print(Guitar.objects.get(guitar_id=num))
+            except:
+                print("exception occured")
+                master_id = num
+                boo = False
+        #section for photo_id
+        boo = True
+        while boo:
+            print("in while")
+            num = random.randint(0, 127)
+            try:
+                print("inner")
+                if not Photos.objects.get(photo_number=num):
+                    print("inner")
+
+            except:
+                print("exception occured")
+                photo_id = num
+                boo = False
+
+        #section for video id
+        boo = True
+        while boo:
+            print("in while")
+            num = random.randint(0, 127)
+            try:
+                print("inner")
+                if not Videos.objects.get(video_number=num):
+                    print("inner")
+
+            except:
+                print("exception occured")
+                video_id = num
+                boo = False
+        #section for story_id
+        boo = True
+        while boo:
+            print("in while")
+            num = random.randint(0, 127)
+            try:
+                print("inner")
+                if not Story.objects.get(story_id=num):
+                    print("inner")
+
+            except:
+                print("exception occured")
+                story_id = num
+                boo = False
+        # section for spec
+        boo = True
+        while boo:
+            print("in while")
+            num = random.randint(0, 127)
+            try:
+                print("inner")
+                if not Specs.objects.get(guitar_spec_id=num):
+                    print("inner")
+
+            except:
+                print("exception occured")
+                spec_id = num
+                boo = False
+        print("while exited")
+
+        post_values['guitar_id'] = str(master_id)
+        print(post_values)
+        # form = GuitarForm(post_values)
+        print("1")
+        guitar = GuitarForm(post_values, prefix="gui")
+        print("2")
+        appearances = AppearForm(request.POST, prefix="app")
+        # if guitar.is_valid() and appearances.is_valid():
+        form = GuitarForm(data)
+        form2 = AppearForm(data)
+        form3 = PhotosForm(data)
+        form4 = SpecsForm(data)
+        form5 = StoryForm(data)
+        form6 = VideosForm(data)
+
+
+
+        if guitar.is_valid() and appearances.is_valid():
+            print(master_id)
+            newitem = form.save(commit=False)
+            newitem.guitar_id = master_id
+            newitem.save()
+            newitem = form2.save(commit=False)
+            newitem.guitar_id = master_id
+            newitem.save()
+            newitem = form3.save(commit=False)
+            newitem.guitar_id = master_id
+            newitem.photo_number = photo_id
+            newitem.save()
+            newitem = form4.save(commit=False)
+            newitem.guitar_id = master_id
+            newitem.guitar_spec_id = spec_id
+            newitem.save()
+            newitem = form5.save(commit=False)
+            newitem.guitar_id = master_id
+            newitem.story_id = story_id
+            newitem.save()
+            newitem = form6.save(commit=False)
+            newitem.guitar_id = master_id
+            newitem.video_number = video_id
+            newitem.save()
+
+            print(newitem.guitar_id)
+            return redirect('/entries/' + str(newitem.pk))
+    #section for display
+    else:
+        print("outer")
+        form = GuitarForm()
+        form2 = AppearForm()
+        form3 = PhotosForm()
+        form4 = SpecsForm()
+        form5 = StoryForm()
+        form6 = VideosForm()
+    return render(request, 'new_edit.html', {'form': form, 'form2': form2, 'form3': form3,
+                                             'form4': form4, 'form5':form5, 'form6': form6})
+    # return render(request, 'new_edit.html', {'form': form})
+
 
 
 def entry_page(request, guitar_id):
