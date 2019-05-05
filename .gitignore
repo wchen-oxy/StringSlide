@@ -6,4 +6,5 @@ venv/
 # random stuff
 .DS_Store
 .idea
-
+StringSlide/.idea
+__pycache__/views.cpython-36.pyc
