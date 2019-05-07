@@ -62,6 +62,7 @@ public class Insert {//establish connections to the database
 
 
         for (int j = 0; j <= args.length; j = j + 2) {
+            System.out.println(args[j]);
             String table = args[j];
             String filename = "fake data/" + args[j+1];
 
@@ -173,7 +174,7 @@ public class Insert {//establish connections to the database
                         ps.setInt(2, Integer.parseInt(csvData.get(i).get(1)));
                         //story_text
                         try {
-                            ps.setString(3, csvData.get(i).get(2));
+                            ps.setString(3, csvData.get(i).get(2).toString());
                         } catch (IndexOutOfBoundsException ie) {
                             ps.setNull(3, Types.VARCHAR);
                         }
