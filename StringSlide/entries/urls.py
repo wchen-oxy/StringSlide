@@ -9,8 +9,8 @@ urlpatterns = [
     url(r'^$', views.home, name="home"),
     url("test", views.index, name="test"),
     url("new",views.new, name="new"),
+    url("advsearch/", views.advsearch, name="advsearch"),
     url("search/", views.search, name="search"),
-    url("advsearch/",views.advsearch, name="advsearch"),
     path("entries/<int:guitar_id>", views.entry_page, name="entry_page"),
 
 

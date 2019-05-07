@@ -14,7 +14,7 @@
 </a>
 <div class="container">
 	<section>
-		<h2 class="col-2-3">{{guitar_man}} "{{guitar_name}}"</h2>
+		<h2 class="col-2-3">{{guitar_man}} {% if guitar_name%}"{{guitar_name}}" {% endif %}{{guitar_model}}</h2>
 		<h3 class="col-2-3">Story</h3>
 		<p>{{story}}</p>
 
@@ -24,7 +24,7 @@
 
 	<aside>
 		<div class =technical_top>
-			<h3 class="col-2-3">{{guitar_man}} "{{guitar_name}}"</h3>
+			<h3 class="col-2-3">{{guitar_man}} {% if guitar_name%}"{{guitar_name}}" {% endif %} {{guitar_model}}</h3>
 			<img class="profile" src={{photo}} width="275" height="400">
 			<h3 class="col-2-3">Guitar Manufacturer: {{guitar_man}}</h3>
 			<h3 class="col-2-3">Guitar Name: {{guitar_name}} </h3>
