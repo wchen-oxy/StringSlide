@@ -1,5 +1,5 @@
-# StringSlide 
-(UPDATED LAST ON 5/7/19)
+# StringSlide (UPDATED LAST ON 5/7/19)
+
 Our final project centered around guitars for databases. Think wikipedia meets facebook. 
 
 NOTES
