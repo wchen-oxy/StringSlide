@@ -8,3 +8,4 @@ venv/
 .idea
 StringSlide/.idea
 __pycache__/views.cpython-36.pyc
+StringSlide/entries/__pycache__/

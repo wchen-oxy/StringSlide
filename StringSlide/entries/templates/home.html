@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}"
 
 <!-- <div class="header">
   <div class="w3-center w3-padding-16">Welcome to StringSlide!</div>
@@ -78,5 +79,43 @@
     </div>
   </a>
 </div>
+
+<div class="w3-row-padding w3-padding-16 w3-center" id="food">
+  <div class="w3-center">
+      <button class="open-button" onclick="openForm()">Advanced Search</button>
+
+      <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>Advanced Search</h1>
+
+          <label for="email"><b>Guitar manufacturer</b></label>
+          <input type="text" placeholder="Guitar manufacturer" name="email" required>
+
+          <label for="psw"><b>Guitar model</b></label>
+          <input type="text" placeholder="Guitar model" name="psw" required>
+
+          <label for="city"><b>City name</b></label>
+          <input type="text" placeholder="City name" name="city" required>
+          <label for="country"><b>Coutry name</b></label>
+          <input type="text" placeholder="Country name" name="country" required>
+
+          <button type="submit" class="btn">Search</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+  </div>
+</div>
+
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
 
 </html>
