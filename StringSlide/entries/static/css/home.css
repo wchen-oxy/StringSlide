@@ -66,3 +66,8 @@ p{margin-left: 2rem;
 	text-align: center;
 	display: inline-block;
 }
+
+.head{
+	padding-left: 10px;
+	padding-right: 10px;
+}
