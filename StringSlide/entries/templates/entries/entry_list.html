@@ -17,35 +17,70 @@
   <section class="hero">
     <!-- Begin section for found ones -->
     <div class="definition">
-      {% if query %}
-      {% for entry in query %}
-      <h1 class="col-2-3">{{entry.manufacturer_name}} "{{entry.guitar_name}}"{{entry.guitar_model}}</h1>
+      {% if prod_year_result %}
+      {% for entry in prod_year_result %}
+      <h1 class="col-2-3">{{entry.manufacturer_name}} "{{entry.guitar_name}}" {{entry.guitar_model}}</h1>
       <h3>Guitar ID: {{entry.guitar_id}}</h3>
-            <h3>Serial Number: {{entry.serial_number}}</h3>
-
+        <h3>Production Year: {{entry.production_year}}</h3>
       <br>
       <br>
-    
-  
       {% endfor %}
       {% endif %}
       <!-- End section for found ones -->
-      <!--Begin section for term not found -->
-      {% if not entrys and not query%}
-      <h1 class="col-2-3">Term Not Found.</h1>
+      {% if man_era_result %}
+      <!--manufacturer_name, guitar_model, production_year, where_purchased-->
+      {% for entry in man_era_result %}
+      <h1 class="col-2-3">{{entry.manufacturer_name}} "{{entry.guitar_name}}" {{entry.guitar_model}}</h1>
+      <h3>Guitar ID: {{entry.guitar_id}}</h3>
+      <h3>Production Year: {{entry.production_year}}</h3>
+      <h3>Location: {{entry.where_purchased}}</h3>
+      <br>
+      <br>
+      {% endfor %}
       {% endif %}
 
-      {% if not error and not query%}
+      {% if country_prod_year %}
+      <!--manufacturer_name, guitar_model, production_year, where_purchased-->
+      {% for entry in country_prod_year %}
+      <h1 class="col-2-3">{{entry.manufacturer_name}} "{{entry.guitar_name}}" {{entry.guitar_model}}</h1>
+      <h3>Guitar ID: {{entry.guitar_id}}</h3>
+      <h3>Production year: {{entry.production_year}}</h3>
+      <h3>Location: {{entry.where_purchased}}</h3>
+      <br>
+      <br>
+      {% endfor %}
+      {% endif %}
+
+
+      {% if pickup_result %}
+      <!--manufacturer_name, guitar_model, production_year, where_purchased-->
+      {% for entry in pickup_result %}
+      <h1 class="col-2-3">{{entry.manufacturer_name}} "{{entry.guitar_name}}" {{entry.guitar_model}}</h1>
+      <h3>Guitar ID: {{entry.guitar_id}}</h3>
+        <h3>Production year: {{entry.production_year}}</h3>
+        <h3>Neck pickup: {{entry.neck_pickup}}</h3>
+        <h3>Middle pickup: {{entry.middle_pickup}}</h3>
+        <h3>Bridge pickup: {{entry.bridge_pickup}}</h3>
+      <br>
+      <br>
+      {% endfor %}
+      {% endif %}
+
+      <!--Begin section for term not found -->
+      {% if query %}
+      {% for entry in query %}
+      <h1 class="col-2-3">{{entry.manufacturer_name}} "{{entry.guitar_name}}" {{entry.guitar_model}}</h1>
+      <h3>Guitar ID: {{entry.guitar_id}}</h3>
+            <h3>Serial Number: {{entry.serial_number}}</h3>
+      <br>
+      <br>
+      {% endfor %}
+      {% endif %}
 
       <!--End Section for term not found -->
 
-
-      {% if entrys %}
-      <p> Did you mean? </p>
-      {% endif %}
-
       <!--Begin section for related words -->
-
+      {% if entrys %}
       {% for entry in entrys %}
        <h1 class="col-2-3">{{entry.manufacturer_name}} "{{entry.guitar_name}}" {{entry.guitar_model}}</h1>
        <h3>Guitar ID: {{entry.guitar_id}}</h3>
@@ -53,7 +88,6 @@
 
         <br>
       <br>
-    
       {% endfor %}
       {% endif %}
 

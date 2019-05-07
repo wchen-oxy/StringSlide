@@ -20,8 +20,8 @@
     <!-- <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div> -->
     <a href="/new">
 
-       
-         <div class="w3-right w3-padding-16">New Entry</div> 
+
+         <div class="w3-right w3-padding-16">New Entry</div>
 
     </a>
     <a href="">
@@ -33,22 +33,41 @@
 
 <!--SEARCH-->
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:80px">
-  <div class="w3-center">
-     
-     <form id="target" name="" action="/search/" method="get">
-          <div class="input-field">
-            <span class="icon"><i class="fa fa-search"></i>
-            </span>
-            <input type="search" id="search" placeholder="Search..." name="q"/>
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <h3>Search for a Guitar Manufacturer, Name or Model.</h3>
+      <div class="w3-center">
+         <form id="target" name="" action="/search/" method="get">
+              <div class="input-field">
+                <span class="icon"><i class="fa fa-search"></i>
+                </span>
+                <input type="search" id="search" placeholder="Search..." name="q"/>
+              </div>
+            </li>
+            <div id="button-container">
+            <button class="target" name="" action="/search/" method="get">Search</button>
+          </form>
           </div>
-        </li>
-        <div id="button-container">
-        <button class="target" name="" action="/search/" method="get">Search</button>
+        </div>
+        <!-- <div>
+        <h2>OR<h2>
+        </div> -->
+        <!-- DIRECT BUTTON-->
+      <!-- <div class="w3-center">
+         <form id="target" name="" action="/entries/" method="GET">
+              <div class="input-field">
+                <h3>Go to Exact Entry.</h3>
+                <span class="icon"><i class="fa fa-search"></i>
+                </span>
+                <input type="search" id="search" placeholder="Input Guitar ID" name="q"/>
+              </div>
+            </li>
+            <div id="button-container">
+            <button class="target" name="" action="/search/" method="get"onclick="buildURL()">Enter!</button>
+          </form>
+      </div>
+    </div> -->
   </div>
 </div>
-
-
-
 
 
 
@@ -56,21 +75,21 @@
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:20px">
 <!-- Guitar Photos Picked for the Day -->
 <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-  <a href="#">
+  <a href="{{guitar_url}}">
     <div class="w3-third">
       <h3>{{guitar_manufacturer}} {{guitar_name}} {{guitar_model}}</h3>
       <img src={{guitar_image}} alt="Guitar Image" height="400" width="300">
       <p style="font-size:20px">{{guitar_summary}}</p>
     </div>
   </a>
-  <a href="#">
+  <a href="{{guitar_url}}">
     <div class="w3-third">
       <h3>{{guitar_manufacturer2}} {{guitar_name2}} {{guitar_model2}}</h3>
       <img src={{guitar_image2}} alt="Guitar Image" height="400" width="300">
       <p style="font-size:20px">{{guitar_summary2}}</p>
     </div>
   </a>
-  <a href="#">
+  <a href="{{guitar_url}}">
     <div class="w3-third">
       <h3>{{guitar_manufacturer3}} {{guitar_name3}} {{guitar_model3}}</h3>
       <img src={{guitar_image3}} alt="Guitar Image" height="400" width="300">
@@ -78,5 +97,163 @@
     </div>
   </a>
 </div>
+<div class="w3-row-padding w3-padding-16 w3-center" id="food">
+  <div class="w3-center">
+      <button class="open-button" onclick="openForm()">Advanced Search</button>
+  </div>
+</div>
+
+<div class="form-popup" id="myForm">
+  <div class="form-container">
+    <!--     <form id="target" name="" action="/search/" method="get">-->
+    <!-- <form action="/advsearch/" class="form-container"> -->
+      <!-- <div class="w3-center"><h3>General information</h3></div>
+      <div class="w3-third">
+        <label for="email"><b>Guitar manufacturer</b></label>
+        <input type="text" placeholder="Ex. Fender" name="manufacturer">
+      </div>
+      <div class="w3-third">
+        <label for="model"><b>Guitar model</b></label>
+        <input type="text" placeholder="Ex. Stratocaster" name="model" >
+      </div>
+      <div class="w3-third">
+        <label for="name"><b>Guitar name/nickname</b></label>
+        <input type="text" placeholder="Ex. Monterey Strat" name="name" >
+      </div>
+
+      <div class="w3-center"><h3>Electronics</h3></div>
+      <div class="w3-third">
+        <label for="email"><b>Neck pickup</b></label>
+        <input type="text" placeholder="Ex. PAF" name="neck_pickup">
+      </div>
+      <div class="w3-third">
+        <label for="model"><b>Middle pickup</b></label>
+        <input type="text" placeholder="Ex. Texas Special" name="middle_pickup">
+      </div>
+      <div class="w3-third">
+        <label for="year"><b>Bridge pickup</b></label>
+        <input type="text" placeholder="Ex. Seymour Duncan APH II" name="bridge_pickup">
+      </div>
+
+      <div class="w3-center"><h3>Woods</h3></div>
+      <div class="w3-third">
+        <label for="body_wood"><b>Body wood</b></label>
+        <input type="text" placeholder="Ex. Mahogany" name="body_wood">
+      </div>
+      <div class="w3-third">
+        <label for="neck_wood"><b>Neck wood</b></label>
+        <input type="text" placeholder="Ex. Maple" name="neck_wood">
+      </div>
+      <div class="w3-third">
+        <label for="fret"><b>Fretboard wood</b></label>
+        <input type="text" placeholder="Ex. Rosewood" name="fret">
+      </div> -->
+
+      <div class="w3-center"><h3>Preselected Advanced Search</h3></div>
+        <div class="w3-center">
+          <p>Find all the guitars made at a specific year</p>
+          <form id="target" name="" action="/advsearch/" method="get">
+               <div class="input-field">
+                 <label for="prod_year">Production year</label>
+                 <span class="icon"><i class="fa fa-search"></i></span>
+                 <input type="search" id="search" placeholder="Ex. 1959" name="prod_year"/>
+               </div>
+             </li>
+             <div id="button-container">
+               <button class="target" name="" action="/advsearch/" method="get">Search</button>
+             </div>
+           </form>
+         </div>
+
+         <div class="w3-center">
+           <p>Find all the guitars made by a particular manufacturer before a certain year and provide their current location</p>
+           <form id="target" name="" action="/advsearch/" method="get">
+                <div class="input-field">
+                  <span class="icon"><i class="fa fa-search"></i></span>
+                  <label for="era">Manufacturer name</label>
+                  <input type="search" id="search" placeholder="Ex. Gibson" name="manufacturer_name"/>
+
+                  <label for="era">Production year</label>
+                  <input type="search" id="search" placeholder="Ex. 1950s" name="era"/>
+                </div>
+                <div id="button-container">
+                  <button class="target" name="" action="/advsearch/" method="get">Search</button>
+                </div>
+            </form>
+          </div>
+
+          <div class="w3-center">
+            <p>Find all the guitars made before a certain year that are located at a specific country</p>
+            <form id="target" name="" action="/advsearch/" method="get">
+                 <div class="input-field">
+                   <span class="icon"><i class="fa fa-search"></i></span>
+                   <label for="era">Current country</label>
+                   <input type="search" id="search" placeholder="Ex. Korea" name="current_country"/>
+
+                   <label for="prod_year_country">Production year</label>
+                   <input type="search" id="search" placeholder="Ex. 1989" name="prod_year_country"/>
+                 </div>
+                 <div id="button-container">
+                   <button class="target" name="" action="/advsearch/" method="get">Search</button>
+                 </div>
+             </form>
+           </div>
+
+           <div class="w3-center">
+             <p>Find all the guitars that have a specific pickup installed on the neck, middle, or bridge position</p>
+             <form id="target" name="" action="/advsearch/" method="get">
+                  <div class="input-field">
+                    <span class="icon"><i class="fa fa-search"></i></span>
+                    <label for="n_pickup">Neck pickup</label>
+                    <input type="search" id="search" placeholder="Ex. PAF" name="n_pickup"/>
+
+                    <label for="m_pickup">Middle pickup</label>
+                    <input type="search" id="search" placeholder="Ex. Texas Special Single Coil" name="m_pickup"/>
+
+                    <label for="b_pickup">Bridge pickup</label>
+                    <input type="search" id="search" placeholder="Ex. Symour Duncan APH" name="b_pickup"/>
+                  </div>
+                  <div id="button-container">
+                    <button class="target" name="" action="/advsearch/" method="get">Search</button>
+                  </div>
+              </form>
+            </div>
+
+
+
+      </div>
+
+
+
+        <!-- <form action="/advsearch/" class="form-container">
+          <label for="prod_year"><b>Production year</b></label>
+          <input type="text" placeholder="Ex. 1963" name="prod_year">
+        </form> -->
+        <div class="w3-center">
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </div>
+
+    <!-- </form> -->
+  </div>
+</div>
+
+
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+// function buildUrl(form)
+// {
+//   var invnum=document.getElementById("invoiceid").value;
+//   form.action="/ws/invoice/"+invnum;
+//   return true;
+// }
+</script>
+
 
 </html>
