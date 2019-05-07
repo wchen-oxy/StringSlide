@@ -65,27 +65,68 @@
 <div class="w3-row-padding w3-padding-16 w3-center" id="food">
   <div class="w3-center">
       <button class="open-button" onclick="openForm()">Advanced Search</button>
-
-      <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
-          <h1>Advanced Search</h1>
-
-          <label for="email"><b>Guitar manufacturer</b></label>
-          <input type="text" placeholder="Guitar manufacturer" name="email" required>
-
-          <label for="psw"><b>Guitar model</b></label>
-          <input type="text" placeholder="Guitar model" name="psw" required>
-
-          <label for="city"><b>City name</b></label>
-          <input type="text" placeholder="City name" name="city" required>
-          <label for="country"><b>Coutry name</b></label>
-          <input type="text" placeholder="Country name" name="country" required>
-
-          <button type="submit" class="btn">Search</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-      </div>
   </div>
+</div>
+
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Advanced Search</h1>
+
+    <div class="w3-center"><h3>General information</h3></div>
+    <div class="w3-third">
+      <label for="email"><b>Guitar manufacturer</b></label>
+      <input type="text" placeholder="Ex. Fender" name="email" required>
+    </div>
+    <div class="w3-third">
+      <label for="model"><b>Guitar model</b></label>
+      <input type="text" placeholder="Ex. Stratocaster" name="model" required>
+    </div>
+    <div class="w3-third">
+      <label for="name"><b>Guitar name/nickname</b></label>
+      <input type="text" placeholder="Ex. Monterey Strat" name="name" required>
+    </div>
+
+    <div class="w3-center"><h3>Electronics</h3></div>
+    <div class="w3-third">
+      <label for="email"><b>Neck pickup</b></label>
+      <input type="text" placeholder="Ex. PAF" name="email" required>
+    </div>
+    <div class="w3-third">
+      <label for="model"><b>Middle pickup</b></label>
+      <input type="text" placeholder="Ex. Texas Special" name="model" required>
+    </div>
+    <div class="w3-third">
+      <label for="year"><b>Bridge pickup</b></label>
+      <input type="text" placeholder="Ex. Seymour Duncan APH II" name="year" required>
+    </div>
+
+    <div class="w3-center"><h3>Woods</h3></div>
+    <div class="w3-third">
+      <label for="body_wood"><b>Body wood</b></label>
+      <input type="text" placeholder="Ex. Mahogany" name="body_wood" required>
+    </div>
+    <div class="w3-third">
+      <label for="neck_wood"><b>Neck wood</b></label>
+      <input type="text" placeholder="Ex. Maple" name="neck_wood" required>
+    </div>
+    <div class="w3-third">
+      <label for="fret"><b>Fretboard wood</b></label>
+      <input type="text" placeholder="Ex. Rosewood" name="freat" required>
+    </div>
+
+    <div class="w3-center"><h3>Years</h3></div>
+    <div class="w3-half">
+      <label for="prod_year"><b>Production year</b></label>
+      <input type="text" placeholder="Ex. 1963" name="prod_year" required>
+    </div>
+    <div class="w3-half">
+      <label for="era"><b>Era</b></label>
+      <input type="text" placeholder="Ex. 1950s" name="era" required>
+    </div>
+
+    <button type="submit" class="btn">Search</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
 </div>
 
 
