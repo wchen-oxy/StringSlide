@@ -238,7 +238,7 @@ def entry_page(request, guitar_id):
     if spec.repairs == 1:
         repaired = "Yes"
     else:
-        repaired = "None"
+        repaired = "No repairs"
 
 
 
