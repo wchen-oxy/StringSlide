@@ -7,6 +7,8 @@ import random
 from .models import Guitar, Story, Photos, Specs, Appearances, Videos
 from .forms import GuitarForm, AppearForm, PhotosForm, SpecsForm, StoryForm, VideosForm
 from django.shortcuts import redirect
+from django.db.models import Max
+
 from django.forms.formsets import formset_factory
 
 
@@ -81,74 +83,54 @@ def new(request):
         post_values = request.POST.copy()
 
         #section for random guitar_id
-        boo = True
-        while boo:
-            print("in while")
-            num = random.randint(0, 9999)
-            try:
-                print("inner")
-                print(Guitar.objects.get(guitar_id=num))
-            except:
-                print("exception occured")
-                master_id = num
-                boo = False
+        print(Guitar.objects.all().aggregate(Max('guitar_id')))
+        max_num = guitar_id=Guitar.objects.all().aggregate(Max('guitar_id'))['guitar_id__max']
+        print(max_num)
+        master_id = int(max_num) + 1
+        # boo = True
+        # while boo:
+        #     print("in while guitar_id")
+        #     num = random.randint(0, 9999)
+        #     try:
+        #         print("inner")
+        #         print(Guitar.objects.get(guitar_id=num))
+        #     except:
+        #         print("exception occured")
+        #         master_id = num
+        #         boo = False
         #section for photo_id
         boo = True
         while boo:
-            print("in while")
+            print("in while Photo id")
             num = random.randint(0, 127)
-            try:
-                print("inner")
-                if not Photos.objects.get(photo_number=num):
-                    print("inner")
 
-            except:
-                print("exception occured")
-                photo_id = num
-                boo = False
+            photo_id = num
+            boo = False
 
         #section for video id
         boo = True
         while boo:
-            print("in while")
+            print("in while video id")
             num = random.randint(0, 127)
-            try:
-                print("inner")
-                if not Videos.objects.get(video_number=num):
-                    print("inner")
 
-            except:
-                print("exception occured")
-                video_id = num
-                boo = False
+            video_id = num
+            boo = False
         #section for story_id
         boo = True
         while boo:
-            print("in while")
+            print("in while story id")
             num = random.randint(0, 127)
-            try:
-                print("inner")
-                if not Story.objects.get(story_id=num):
-                    print("inner")
 
-            except:
-                print("exception occured")
-                story_id = num
-                boo = False
+            story_id = num
+            boo = False
         # section for spec
         boo = True
         while boo:
-            print("in while")
+            print("in while spec id")
             num = random.randint(0, 127)
-            try:
-                print("inner")
-                if not Specs.objects.get(guitar_spec_id=num):
-                    print("inner")
 
-            except:
-                print("exception occured")
-                spec_id = num
-                boo = False
+            spec_id = num
+            boo = False
         print("while exited")
 
         post_values['guitar_id'] = str(master_id)
@@ -183,6 +165,7 @@ def new(request):
             newitem = form4.save(commit=False)
             newitem.guitar_id = master_id
             newitem.guitar_spec_id = spec_id
+
             newitem.save()
             newitem = form5.save(commit=False)
             newitem.guitar_id = master_id
@@ -267,3 +250,16 @@ def entry_page(request, guitar_id):
                                                   'next': next,
 
                                           })
+
+
+def search(request):
+    print(request)
+    error = False
+    if 'q' in request.GET:
+        q = request.GET['q']
+        exact_entry = Guitar.objects.filter(guitar_model__iexact=q)
+        entrys = Guitar.objects.filter(guitar_model__icontains=q)
+        return render(request, 'entries/entry_list.html', {'entrys': entrys, 'query': exact_entry})
+        # return render(request, 'entries', {'error': error})
+    return HttpResponse("Hello, world. You're at the entries")
+
