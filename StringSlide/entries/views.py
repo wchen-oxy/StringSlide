@@ -17,8 +17,10 @@ def index(request):
     return HttpResponse("Hello, world. You're at the entries")
 
 def home(request):
-    num = random.randint(1,1020)
-    num2 = random.randint(1,1020)
+    num = random.randint(1,998)
+    num2 = random.randint(1,998)
+    num3 = random.randint(1,998)
+
 
     guitar = Guitar.objects.get(guitar_id=num)
     g_photo = Photos.objects.get(guitar=num)
@@ -26,9 +28,9 @@ def home(request):
     guitar2 = Guitar.objects.get(guitar_id=num2)
     g_photo2 = Photos.objects.get(guitar_id=num2)
     g_story2 = Story.objects.get(guitar_id=num2)
-    guitar3 = Guitar.objects.get(guitar_id=1019)
-    g_photo3 = Photos.objects.get(guitar=1019)
-    g_story3 = Story.objects.get(guitar_id=1019)
+    guitar3 = Guitar.objects.get(guitar_id=995)
+    g_photo3 = Photos.objects.get(guitar=995)
+    g_story3 = Story.objects.get(guitar_id=995)
 
     text_1 = g_story.story_text;
     text_1 = (text_1[:100] + '...') if len(text_1) > 103 else text_1
